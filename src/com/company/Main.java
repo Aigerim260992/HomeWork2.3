@@ -6,21 +6,16 @@ public class Main {
         BankAccount bankAccount = new BankAccount();
         bankAccount.deposit(10000);
 
-        int x = 1;
-
+        double x = 1;
         while (x==1) {
             try {
                 bankAccount.withDraw(6000);
-                System.out.println("На вашем счету осталось" + " " + bankAccount.getAmount());
             } catch (LimitException e) {
                 e.printStackTrace();
+                x = 0;
             }
             System.out.println("Можно снять сумму" + " " + bankAccount.getAmount());
-            System.out.println("Вы сняли остаток со счета" + " " + bankAccount.getAmount());
-          x=1;
-
         }
-
-
+        System.out.println("Вы сняли остаток со счета" + " " + bankAccount.getAmount());
     }
 }

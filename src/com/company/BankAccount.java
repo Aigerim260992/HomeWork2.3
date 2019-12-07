@@ -9,18 +9,18 @@ public class BankAccount {
         return amount;
     }
 
-    public void deposit(double sum) {
-        amount = amount + sum;
-        System.out.println("На вашем счету" +" " + getAmount());//положить деньги на счет
+    public double deposit(double sum) {
+        amount = getAmount() + sum;
+        System.out.println("На вашем счету" +" " + getAmount());
+        return getAmount();//положить деньги на счет
     }
 
-    public void withDraw(double sum) throws LimitException {// снимает деньги
-        if (sum > getAmount()) {
-            throw new LimitException("Запрашиваемая сумма на снятие больше чем остаток на счете ", amount);
+    public double withDraw(double sum) throws LimitException {
+        amount = getAmount() - sum;
+        System.out.println("Остаток денежных средств после снятия" + " " + " " + getAmount());
+        if (sum > amount) {
+            throw new LimitException("Запрашиваемая сумма на снятие больше чем остаток на счете ", getAmount());
         }
-        amount = amount - sum;
-        System.out.println("Вы сняли" + " " + " " + sum);
-
+        return amount;
     }
-
 }
